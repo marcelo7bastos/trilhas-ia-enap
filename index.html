@@ -569,6 +569,71 @@
       margin-top: 4px;
     }
 
+    .supplement-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 16px 0 14px;
+    }
+
+    .filter-button {
+      min-height: 38px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--ink);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 900;
+    }
+
+    .filter-button:hover,
+    .filter-button:focus,
+    .filter-button[aria-pressed="true"] {
+      border-color: var(--brand);
+      background: var(--soft-green);
+      color: var(--brand-dark);
+      outline: none;
+    }
+
+    .supplement-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .supplement-card {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 14px;
+      padding: 16px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 20px rgba(24, 34, 48, 0.05);
+    }
+
+    .supplement-card.is-hidden {
+      display: none;
+    }
+
+    .supplement-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    .supplement-code {
+      width: 44px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: #eef2f7;
+      color: var(--brand-dark);
+      font-weight: 900;
+    }
+
     .text-link {
       color: var(--brand-dark);
       font-weight: 900;
@@ -665,6 +730,7 @@
       .hero-grid,
       .decision-grid,
       .program-grid,
+      .supplement-grid,
       .principles,
       .stats {
         grid-template-columns: 1fr;
@@ -700,7 +766,8 @@
         display: block;
       }
 
-      .program-card {
+      .program-card,
+      .supplement-card {
         grid-template-columns: 1fr;
       }
 
@@ -729,6 +796,7 @@
       .route-map,
       .decision-card,
       .program-card,
+      .supplement-card,
       .principle,
       .table-wrap,
       .stat {
@@ -753,6 +821,7 @@
       <div class="nav-links">
         <a href="#decisao">Escolher caminho</a>
         <a href="#programas">Programas</a>
+        <a href="#complementares">Complementares</a>
         <a href="#criterios">Critérios</a>
         <a href="#resumo">Resumo</a>
       </div>
@@ -809,8 +878,8 @@
         </p>
       </div>
       <div class="stats" aria-label="Resumo numérico">
-        <div class="stat"><strong>10</strong><span>programas e formações organizados por perfil</span></div>
-        <div class="stat"><strong>8h</strong><span>menor porta de entrada para experimentar IA</span></div>
+        <div class="stat"><strong>10</strong><span>programas e formações principais</span></div>
+        <div class="stat"><strong>17</strong><span>cursos complementares por necessidade</span></div>
         <div class="stat"><strong>4</strong><span>caminhos práticos de decisão</span></div>
         <div class="stat"><strong>EV.G</strong><span>fonte oficial para inscrição e certificação</span></div>
       </div>
@@ -1055,6 +1124,308 @@
       </div>
     </section>
 
+    <section id="complementares" class="page">
+      <div class="section-head">
+        <div>
+          <h2>Cursos complementares para fortalecer a jornada</h2>
+          <p>
+            Estes cursos não são pré-requisitos da trilha principal. Use como reforço conforme necessidade:
+            base digital, IA prática, dados, painéis, automação, segurança, LGPD e governança.
+          </p>
+        </div>
+      </div>
+
+      <div class="notice">
+        <p>
+          <strong>Como usar:</strong> escolha um filtro abaixo ou navegue pela lista completa.
+          Os códigos C1, C2 e seguintes indicam cursos complementares, separados da trilha principal #1 a #10.
+        </p>
+      </div>
+
+      <div class="supplement-controls" aria-label="Filtros de cursos complementares">
+        <button class="filter-button" type="button" data-supplement-filter="all" aria-pressed="true">Todos</button>
+        <button class="filter-button" type="button" data-supplement-filter="base" aria-pressed="false">Comece do zero</button>
+        <button class="filter-button" type="button" data-supplement-filter="ia" aria-pressed="false">Use melhor a IA</button>
+        <button class="filter-button" type="button" data-supplement-filter="data" aria-pressed="false">Dados e painéis</button>
+        <button class="filter-button" type="button" data-supplement-filter="automation" aria-pressed="false">Automação e governança</button>
+        <button class="filter-button" type="button" data-supplement-filter="technical" aria-pressed="false">Opcional técnico</button>
+      </div>
+
+      <div class="program-filter" aria-live="polite">
+        <p id="supplement-status">Mostrando todos os 17 cursos complementares.</p>
+      </div>
+
+      <div class="supplement-grid">
+        <article class="supplement-card" data-groups="base">
+          <span class="supplement-code">C1</span>
+          <div>
+            <h3>Como Trabalhar com Computadores e Dispositivos Móveis</h3>
+            <p>Nivelamento para quem precisa reforçar noções básicas de computador, aplicativos, acesso online e Office.</p>
+            <div class="meta">
+              <span class="tag hours">6h</span>
+              <span class="tag">base digital</span>
+            </div>
+            <div class="program-actions">
+              <a class="text-link" href="https://www.escolavirtual.gov.br/curso/1130" target="_blank" rel="noopener">Abrir página oficial</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="supplement-card" data-groups="base data">
+          <span class="supplement-code">C2</span>
+          <div>
+            <h3>Introdução ao Excel</h3>
+            <p>Base de planilhas para organizar dados, usar fórmulas, criar gráficos e apoiar análises simples.</p>
+            <div class="meta">
+              <span class="tag hours">25h</span>
+              <span class="tag">planilhas</span>
+              <span class="tag">dados</span>
+            </div>
+            <div class="program-actions">
+              <a class="text-link" href="https://www.escolavirtual.gov.br/curso/459" target="_blank" rel="noopener">Abrir página oficial</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="supplement-card" data-groups="base">
+          <span class="supplement-code">C3</span>
+          <div>
+            <h3>Segurança da Informação para Todos</h3>
+            <p>Complemento transversal sobre privacidade, golpes digitais, proteção de dispositivos e dados pessoais.</p>
+            <div class="meta">
+              <span class="tag hours">24h</span>
+              <span class="tag">segurança</span>
+            </div>
+            <div class="program-actions">
+              <a class="text-link" href="https://www.escolavirtual.gov.br/curso/1256" target="_blank" rel="noopener">Abrir página oficial</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="supplement-card" data-groups="ia">
+          <span class="supplement-code">C4</span>
+          <div>
+            <h3>Engenharia de prompt eficaz para servidores públicos</h3>
+            <p>Curso curto para escrever prompts claros, refinar respostas e usar IA com mais precisão no trabalho público.</p>
+            <div class="meta">
+              <span class="tag hours">2h</span>
+              <span class="tag">prompt</span>
+              <span class="tag">IA prática</span>
+            </div>
+            <div class="program-actions">
+              <a class="text-link" href="https://www.escolavirtual.gov.br/curso/1439" target="_blank" rel="noopener">Abrir página oficial</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="supplement-card" data-groups="ia">
+          <span class="supplement-code">C5</span>
+          <div>
+            <h3>Inteligência Artificial Generativa</h3>
+            <p>Introdução breve para entender IA generativa e seus usos por servidores e cidadãos interessados no tema.</p>
+            <div class="meta">
+              <span class="tag hours">2h</span>
+              <span class="tag">IA generativa</span>
+            </div>
+            <div class="program-actions">
+              <a class="text-link" href="https://www.escolavirtual.gov.br/curso/1091" target="_blank" rel="noopener">Abrir página oficial</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="supplement-card" data-groups="ia">
+          <span class="supplement-code">C6</span>
+          <div>
+            <h3>Ética em IA</h3>
+            <p>Reforço crítico sobre IA responsável, transparência, privacidade, vieses, responsabilidade social e uso ético.</p>
+            <div class="meta">
+              <span class="tag hours">2h</span>
+              <span class="tag">ética</span>
+              <span class="tag">responsabilidade</span>
+            </div>
+            <div class="program-actions">
+              <a class="text-link" href="https://www.escolavirtual.gov.br/curso/1090" target="_blank" rel="noopener">Abrir página oficial</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="supplement-card" data-groups="ia">
+          <span class="supplement-code">C7</span>
+          <div>
+            <h3>IA - Aplicações no Governo Federal</h3>
+            <p>Mostra usos concretos de IA no governo, como biometria, antifraude, PLN, modelagem preditiva e LLMs.</p>
+            <div class="meta">
+              <span class="tag hours">8h</span>
+              <span class="tag">governo</span>
+              <span class="tag">casos de uso</span>
+            </div>
+            <div class="program-actions">
+              <a class="text-link" href="https://www.escolavirtual.gov.br/curso/1395" target="_blank" rel="noopener">Abrir página oficial</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="supplement-card" data-groups="data">
+          <span class="supplement-code">C8</span>
+          <div>
+            <h3>Introdução à Ciência de Dados - Conceitos e Ferramentas</h3>
+            <p>Primeiro contato com ciência de dados, BI, mineração de dados, fontes de dados e ferramentas aplicadas.</p>
+            <div class="meta">
+              <span class="tag hours">4h</span>
+              <span class="tag">dados</span>
+              <span class="tag">fundamentos</span>
+            </div>
+            <div class="program-actions">
+              <a class="text-link" href="https://www.escolavirtual.gov.br/curso/976" target="_blank" rel="noopener">Abrir página oficial</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="supplement-card" data-groups="data">
+          <span class="supplement-code">C9</span>
+          <div>
+            <h3>Introdução à Ciência de Dados - Tratamento de Dados</h3>
+            <p>Curso curto para entender limpeza, redução, normalização e preparação de dados antes da análise.</p>
+            <div class="meta">
+              <span class="tag hours">2h</span>
+              <span class="tag">tratamento de dados</span>
+            </div>
+            <div class="program-actions">
+              <a class="text-link" href="https://www.escolavirtual.gov.br/curso/1257" target="_blank" rel="noopener">Abrir página oficial</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="supplement-card" data-groups="data">
+          <span class="supplement-code">C10</span>
+          <div>
+            <h3>Análise de dados como suporte à tomada de decisão</h3>
+            <p>Aprofunda análise, pré-processamento, análise descritiva e uso de painéis para apoiar decisões.</p>
+            <div class="meta">
+              <span class="tag hours">30h</span>
+              <span class="tag">decisão</span>
+              <span class="tag">BI</span>
+            </div>
+            <div class="program-actions">
+              <a class="text-link" href="https://www.escolavirtual.gov.br/curso/406" target="_blank" rel="noopener">Abrir página oficial</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="supplement-card" data-groups="data">
+          <span class="supplement-code">C11</span>
+          <div>
+            <h3>Aplicação do Power BI para Aprimoramento da Gestão</h3>
+            <p>Curso prático sobre transformação, modelagem, cálculos, visualização, publicação e automação no Power BI.</p>
+            <div class="meta">
+              <span class="tag hours">25h</span>
+              <span class="tag">Power BI</span>
+              <span class="tag">painéis</span>
+            </div>
+            <div class="program-actions">
+              <a class="text-link" href="https://www.escolavirtual.gov.br/curso/840" target="_blank" rel="noopener">Abrir página oficial</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="supplement-card" data-groups="data">
+          <span class="supplement-code">C12</span>
+          <div>
+            <h3>Visualização de Dados Aplicada à Transformação Digital</h3>
+            <p>Complementa a comunicação com dados por meio de visualização, storytelling, painéis e casos reais.</p>
+            <div class="meta">
+              <span class="tag hours">25h</span>
+              <span class="tag">visualização</span>
+              <span class="tag">storytelling</span>
+            </div>
+            <div class="program-actions">
+              <a class="text-link" href="https://www.escolavirtual.gov.br/curso/802" target="_blank" rel="noopener">Abrir página oficial</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="supplement-card" data-groups="automation">
+          <span class="supplement-code">C13</span>
+          <div>
+            <h3>Fundamentos da transformação digital: mapeamento e automação de processos</h3>
+            <p>Ajuda a compreender processos, melhoria, BPMN e desenho de automações antes de automatizar rotinas.</p>
+            <div class="meta">
+              <span class="tag hours">20h</span>
+              <span class="tag">processos</span>
+              <span class="tag">BPMN</span>
+            </div>
+            <div class="program-actions">
+              <a class="text-link" href="https://www.escolavirtual.gov.br/curso/518" target="_blank" rel="noopener">Abrir página oficial</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="supplement-card" data-groups="automation">
+          <span class="supplement-code">C14</span>
+          <div>
+            <h3>Automação de Processos através da RPA para Transformação Digital</h3>
+            <p>Faz a ponte entre automação, hiperautomação, RPA e casos práticos de transformação digital no governo.</p>
+            <div class="meta">
+              <span class="tag hours">25h</span>
+              <span class="tag">RPA</span>
+              <span class="tag">automação</span>
+            </div>
+            <div class="program-actions">
+              <a class="text-link" href="https://www.escolavirtual.gov.br/curso/797" target="_blank" rel="noopener">Abrir página oficial</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="supplement-card" data-groups="automation">
+          <span class="supplement-code">C15</span>
+          <div>
+            <h3>Fundamentos da Lei Geral de Proteção de Dados (LGPD)</h3>
+            <p>Complemento transversal sobre tratamento de dados, dados sensíveis, bases legais, privacidade e segurança.</p>
+            <div class="meta">
+              <span class="tag hours">15h</span>
+              <span class="tag">LGPD</span>
+              <span class="tag">proteção de dados</span>
+            </div>
+            <div class="program-actions">
+              <a class="text-link" href="https://www.escolavirtual.gov.br/curso/603" target="_blank" rel="noopener">Abrir página oficial</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="supplement-card" data-groups="automation">
+          <span class="supplement-code">C16</span>
+          <div>
+            <h3>Governança de Dados</h3>
+            <p>Fecha a jornada com visão institucional sobre metadados, qualidade, gestão inteligente e governança de dados.</p>
+            <div class="meta">
+              <span class="tag hours">30h</span>
+              <span class="tag">governança</span>
+              <span class="tag">dados</span>
+            </div>
+            <div class="program-actions">
+              <a class="text-link" href="https://www.escolavirtual.gov.br/curso/270" target="_blank" rel="noopener">Abrir página oficial</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="supplement-card" data-groups="technical">
+          <span class="supplement-code">C17</span>
+          <div>
+            <h3>Aprendendo com Python</h3>
+            <p>Opcional técnico para quem quer avançar em programação, dados, automação ou prototipagem com código.</p>
+            <div class="meta">
+              <span class="tag hours">20h</span>
+              <span class="tag">Python</span>
+              <span class="tag level">opcional técnico</span>
+            </div>
+            <div class="program-actions">
+              <a class="text-link" href="https://www.escolavirtual.gov.br/curso/629" target="_blank" rel="noopener">Abrir página oficial</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section id="criterios" class="page">
       <div class="section-head">
         <div>
@@ -1206,6 +1577,9 @@
     const resetButton = document.querySelector("#reset-filter");
     const statusText = document.querySelector("#filter-status");
     const programSection = document.querySelector("#programas");
+    const supplementButtons = document.querySelectorAll("[data-supplement-filter]");
+    const supplementCards = document.querySelectorAll(".supplement-card");
+    const supplementStatus = document.querySelector("#supplement-status");
 
     function setActivePath(path, label, shouldScroll = true) {
       let visibleCount = 0;
@@ -1260,6 +1634,28 @@
     });
 
     resetButton.addEventListener("click", resetPrograms);
+
+    supplementButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const selectedGroup = button.dataset.supplementFilter;
+        let visibleCount = 0;
+
+        supplementCards.forEach((card) => {
+          const groups = card.dataset.groups.split(" ");
+          const shouldShow = selectedGroup === "all" || groups.includes(selectedGroup);
+          card.classList.toggle("is-hidden", !shouldShow);
+          if (shouldShow) visibleCount += 1;
+        });
+
+        supplementButtons.forEach((filterButton) => {
+          filterButton.setAttribute("aria-pressed", String(filterButton === button));
+        });
+
+        supplementStatus.textContent = selectedGroup === "all"
+          ? "Mostrando todos os 17 cursos complementares."
+          : `Mostrando ${visibleCount} cursos complementares deste bloco.`;
+      });
+    });
   </script>
 </body>
 </html>

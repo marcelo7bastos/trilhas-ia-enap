@@ -373,13 +373,59 @@
       margin: 10px 0 14px;
     }
 
-    .decision-card ol {
-      margin: auto 0 0;
-      padding-left: 20px;
+    .path-list {
+      display: grid;
+      gap: 8px;
+      margin-top: auto;
     }
 
-    .decision-card li {
-      margin-top: 8px;
+    .program-ref {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 8px;
+      align-items: start;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .program-ref span {
+      display: inline-grid;
+      min-width: 34px;
+      min-height: 28px;
+      place-items: center;
+      border-radius: 6px;
+      background: #eef2f7;
+      color: var(--blue);
+      font-weight: 900;
+    }
+
+    .program-ref:hover,
+    .program-ref:focus {
+      color: var(--brand-dark);
+      outline: none;
+      text-decoration: underline;
+    }
+
+    .path-button {
+      width: 100%;
+      min-height: 42px;
+      margin-top: 16px;
+      border: 1px solid var(--brand);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--brand-dark);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 900;
+    }
+
+    .path-button:hover,
+    .path-button:focus,
+    .path-button[aria-pressed="true"] {
+      background: var(--brand);
+      color: #fff;
+      outline: none;
     }
 
     .stats {
@@ -413,11 +459,61 @@
       gap: 14px;
     }
 
+    .program-filter {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+    }
+
+    .program-filter p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .reset-button {
+      min-height: 36px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--brand-dark);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 900;
+    }
+
+    .reset-button:hover,
+    .reset-button:focus {
+      border-color: var(--brand);
+      outline: none;
+    }
+
     .program-card {
       display: grid;
       grid-template-columns: 54px 1fr;
       gap: 14px;
       padding: 18px;
+    }
+
+    .program-card.is-hidden {
+      display: none;
+    }
+
+    .program-card.is-selected {
+      border-color: var(--brand);
+      box-shadow: 0 0 0 3px rgba(0, 107, 95, 0.14), 0 8px 20px rgba(24, 34, 48, 0.05);
+    }
+
+    .program-card:target {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(36, 79, 134, 0.18), 0 8px 20px rgba(24, 34, 48, 0.05);
     }
 
     .rank {
@@ -726,7 +822,7 @@
           <h2>Escolha pelo objetivo, não por uma fila única</h2>
           <p>
             A sequência abaixo reduz a sensação de que todos precisam cursar centenas de horas.
-            Comece pelo caminho mais próximo da sua necessidade atual.
+            Comece pelo caminho mais próximo da sua necessidade atual. Os códigos #1, #2 e seguintes correspondem aos programas da seção abaixo.
           </p>
         </div>
       </div>
@@ -736,43 +832,47 @@
           <span class="label fast">Começar rápido</span>
           <h3>Quero entender IA e testar usos práticos</h3>
           <p>Melhor para quem está no ponto zero e precisa de uma primeira experiência curta e segura.</p>
-          <ol>
-            <li>Fundamentos de IA do Google</li>
-            <li>Fundamentos e Aplicações da IA para o Agente Público</li>
-          </ol>
+          <div class="path-list" aria-label="Programas sugeridos para começar rápido">
+            <a class="program-ref" href="#programa-1"><span>#1</span>Fundamentos de IA do Google</a>
+            <a class="program-ref" href="#programa-2"><span>#2</span>Fundamentos e Aplicações da IA para o Agente Público</a>
+          </div>
+          <button class="path-button" type="button" data-filter="fast" data-label="Começar rápido" aria-pressed="false">Ver este caminho</button>
         </article>
 
         <article class="decision-card">
           <span class="label work">Rotina administrativa</span>
           <h3>Quero aplicar IA em tarefas e processos</h3>
           <p>Foco em produtividade, atendimento, organização de trabalho, automação simples e melhoria de fluxos.</p>
-          <ol>
-            <li>IA na Prática</li>
-            <li>IA para Otimização de Processos e Automação Inteligente</li>
-            <li>Tomada de Decisão para Gestores Públicos</li>
-          </ol>
+          <div class="path-list" aria-label="Programas sugeridos para rotina administrativa">
+            <a class="program-ref" href="#programa-3"><span>#3</span>IA na Prática</a>
+            <a class="program-ref" href="#programa-4"><span>#4</span>IA para Otimização de Processos e Automação Inteligente</a>
+            <a class="program-ref" href="#programa-6"><span>#6</span>Tomada de Decisão para Gestores Públicos</a>
+          </div>
+          <button class="path-button" type="button" data-filter="work" data-label="Rotina administrativa" aria-pressed="false">Ver este caminho</button>
         </article>
 
         <article class="decision-card">
           <span class="label leadership">Gestão e liderança</span>
           <h3>Quero decidir, priorizar e governar iniciativas de IA</h3>
           <p>Indicado para coordenação de equipes, áreas finalísticas, políticas públicas e projetos institucionais.</p>
-          <ol>
-            <li>Fundamentos de IA para Lideranças</li>
-            <li>IA Estratégica e Visão de Futuro</li>
-            <li>Executivo de Dados e IA</li>
-          </ol>
+          <div class="path-list" aria-label="Programas sugeridos para gestão e liderança">
+            <a class="program-ref" href="#programa-5"><span>#5</span>Fundamentos de IA para Lideranças</a>
+            <a class="program-ref" href="#programa-7"><span>#7</span>IA Estratégica e Visão de Futuro</a>
+            <a class="program-ref" href="#programa-10"><span>#10</span>Executivo de Dados e IA</a>
+          </div>
+          <button class="path-button" type="button" data-filter="leadership" data-label="Gestão e liderança" aria-pressed="false">Ver este caminho</button>
         </article>
 
         <article class="decision-card">
           <span class="label tech">TIC, dados e tecnologia</span>
           <h3>Quero atuar perto de sistemas, dados e projetos técnicos</h3>
           <p>Para quem precisa dialogar com equipes técnicas ou estruturar soluções baseadas em dados e IA.</p>
-          <ol>
-            <li>Fundamentos de TI, Dados e IA para Gestores de TIC</li>
-            <li>Engenharia de Dados e IA Aplicada</li>
-            <li>Executivo de Dados e IA</li>
-          </ol>
+          <div class="path-list" aria-label="Programas sugeridos para TIC, dados e tecnologia">
+            <a class="program-ref" href="#programa-8"><span>#8</span>Fundamentos de TI, Dados e IA para Gestores de TIC</a>
+            <a class="program-ref" href="#programa-9"><span>#9</span>Engenharia de Dados e IA Aplicada</a>
+            <a class="program-ref" href="#programa-10"><span>#10</span>Executivo de Dados e IA</a>
+          </div>
+          <button class="path-button" type="button" data-filter="tech" data-label="TIC, dados e tecnologia" aria-pressed="false">Ver este caminho</button>
         </article>
       </div>
     </section>
@@ -787,8 +887,13 @@
         </div>
       </div>
 
+      <div class="program-filter" aria-live="polite">
+        <p id="filter-status">Mostrando todos os programas recomendados.</p>
+        <button class="reset-button" type="button" id="reset-filter">Ver todos</button>
+      </div>
+
       <div class="program-grid">
-        <article class="program-card">
+        <article class="program-card" id="programa-1" data-paths="fast">
           <span class="rank">1</span>
           <div>
             <h3>Fundamentos de IA do Google</h3>
@@ -804,7 +909,7 @@
           </div>
         </article>
 
-        <article class="program-card">
+        <article class="program-card" id="programa-2" data-paths="fast">
           <span class="rank">2</span>
           <div>
             <h3>Fundamentos e Aplicações da IA para o Agente Público</h3>
@@ -820,7 +925,7 @@
           </div>
         </article>
 
-        <article class="program-card">
+        <article class="program-card" id="programa-3" data-paths="work">
           <span class="rank">3</span>
           <div>
             <h3>IA na Prática: Ferramentas e Soluções no Dia a Dia do Agente Público</h3>
@@ -836,7 +941,7 @@
           </div>
         </article>
 
-        <article class="program-card">
+        <article class="program-card" id="programa-4" data-paths="work">
           <span class="rank">4</span>
           <div>
             <h3>IA para Otimização de Processos e Automação Inteligente no Serviço Público</h3>
@@ -852,7 +957,7 @@
           </div>
         </article>
 
-        <article class="program-card">
+        <article class="program-card" id="programa-5" data-paths="leadership">
           <span class="rank">5</span>
           <div>
             <h3>Fundamentos de Inteligência Artificial para Lideranças</h3>
@@ -868,7 +973,7 @@
           </div>
         </article>
 
-        <article class="program-card">
+        <article class="program-card" id="programa-6" data-paths="work">
           <span class="rank">6</span>
           <div>
             <h3>IA para Otimização de Processos e Tomada de Decisão para Gestores Públicos</h3>
@@ -884,7 +989,7 @@
           </div>
         </article>
 
-        <article class="program-card">
+        <article class="program-card" id="programa-7" data-paths="leadership">
           <span class="rank">7</span>
           <div>
             <h3>IA Estratégica e Visão de Futuro para Lideranças no Setor Público</h3>
@@ -900,7 +1005,7 @@
           </div>
         </article>
 
-        <article class="program-card">
+        <article class="program-card" id="programa-8" data-paths="tech">
           <span class="rank">8</span>
           <div>
             <h3>Fundamentos de TI, Dados e IA para Gestores de TIC</h3>
@@ -916,7 +1021,7 @@
           </div>
         </article>
 
-        <article class="program-card">
+        <article class="program-card" id="programa-9" data-paths="tech">
           <span class="rank">9</span>
           <div>
             <h3>Engenharia de Dados e IA Aplicada para Gestores de TIC</h3>
@@ -932,7 +1037,7 @@
           </div>
         </article>
 
-        <article class="program-card">
+        <article class="program-card" id="programa-10" data-paths="leadership tech">
           <span class="rank">10</span>
           <div>
             <h3>Executivo de Dados e IA: Fundamentos e Estratégias no Setor Público</h3>
@@ -1094,5 +1199,67 @@
       </div>
     </div>
   </footer>
+  <script>
+    const pathButtons = document.querySelectorAll(".path-button");
+    const programCards = document.querySelectorAll(".program-card");
+    const programRefs = document.querySelectorAll(".program-ref");
+    const resetButton = document.querySelector("#reset-filter");
+    const statusText = document.querySelector("#filter-status");
+    const programSection = document.querySelector("#programas");
+
+    function setActivePath(path, label, shouldScroll = true) {
+      let visibleCount = 0;
+
+      programCards.forEach((card) => {
+        const paths = card.dataset.paths.split(" ");
+        const isSelected = paths.includes(path);
+        card.classList.toggle("is-hidden", !isSelected);
+        card.classList.toggle("is-selected", isSelected);
+        if (isSelected) visibleCount += 1;
+      });
+
+      pathButtons.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.filter === path));
+      });
+
+      statusText.textContent = `Mostrando ${visibleCount} programas do caminho: ${label}.`;
+      if (shouldScroll) {
+        programSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    function resetPrograms() {
+      programCards.forEach((card) => {
+        card.classList.remove("is-hidden", "is-selected");
+      });
+
+      pathButtons.forEach((button) => {
+        button.setAttribute("aria-pressed", "false");
+      });
+
+      statusText.textContent = "Mostrando todos os programas recomendados.";
+    }
+
+    pathButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        setActivePath(button.dataset.filter, button.dataset.label);
+      });
+    });
+
+    programRefs.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const button = link.closest(".decision-card").querySelector(".path-button");
+        const target = document.querySelector(link.getAttribute("href"));
+
+        if (!button || !target) return;
+
+        event.preventDefault();
+        setActivePath(button.dataset.filter, button.dataset.label, false);
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    resetButton.addEventListener("click", resetPrograms);
+  </script>
 </body>
 </html>

@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Guia de trilhas de IA e tecnologia na EV.G/Enap, organizado por perfil de aprendizagem e nível de aprofundamento." />
+  <title>Trilhas de IA na EV.G/Enap | Guia de Curadoria</title>
+  <style>
+    :root {
+      --ink: #182230;
+      --muted: #5d6b82;
+      --line: #d8dee8;
+      --paper: #ffffff;
+      --surface: #f5f7fa;
+      --brand: #006b5f;
+      --brand-dark: #004d45;
+      --blue: #244f86;
+      --gold: #b88400;
+      --red: #a43f3f;
+      --soft-green: #e7f4f1;
+      --soft-blue: #e8f0fa;
+      --soft-gold: #fff4d6;
+      --soft-red: #fbeaea;
+      --shadow: 0 12px 30px rgba(24, 34, 48, 0.08);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--surface);
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 12px;
+      top: -48px;
+      z-index: 10;
+      background: var(--ink);
+      color: #fff;
+      padding: 10px 12px;
+      border-radius: 6px;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    .page {
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.92);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      color: var(--brand-dark);
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 7px;
+      background:
+        linear-gradient(90deg, transparent 47%, rgba(255,255,255,0.78) 47% 53%, transparent 53%),
+        linear-gradient(0deg, var(--brand) 0 48%, var(--blue) 48% 100%);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      padding: 8px 10px;
+      border-radius: 6px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.94rem;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      background: var(--soft-green);
+      color: var(--brand-dark);
+      outline: none;
+    }
+
+    .hero {
+      padding: 52px 0 28px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      padding: 36px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-left: 8px solid var(--brand);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      color: var(--brand-dark);
+      background: var(--soft-green);
+      border: 1px solid #b7dcd5;
+      border-radius: 6px;
+      padding: 6px 9px;
+      font-size: 0.84rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      margin-top: 18px;
+      max-width: 780px;
+      font-size: clamp(2rem, 4.6vw, 3.55rem);
+    }
+
+    .lead {
+      margin: 18px 0 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.13rem;
+    }
+
+    .hero-actions,
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 1px solid var(--brand);
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .button.secondary {
+      background: #fff;
+      color: var(--brand-dark);
+    }
+
+    .button:hover,
+    .button:focus {
+      background: var(--brand-dark);
+      color: #fff;
+      outline: none;
+    }
+
+    .route-map {
+      min-height: 100%;
+      padding: 28px;
+      background: var(--ink);
+      color: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .route-map h2 {
+      font-size: 1.3rem;
+    }
+
+    .route-map p {
+      margin: 8px 0 0;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .map-steps {
+      display: grid;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .map-step {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 12px;
+      align-items: start;
+      position: relative;
+    }
+
+    .map-step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      left: 17px;
+      top: 42px;
+      width: 2px;
+      height: calc(100% - 24px);
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .dot {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border: 2px solid rgba(255, 255, 255, 0.45);
+      border-radius: 50%;
+      background: var(--brand);
+      font-weight: 900;
+    }
+
+    .map-step strong {
+      display: block;
+    }
+
+    .map-step span {
+      display: block;
+      margin-top: 2px;
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 0.95rem;
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 18px;
+    }
+
+    .section-head p {
+      max-width: 780px;
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    h2 {
+      font-size: clamp(1.55rem, 3vw, 2.25rem);
+    }
+
+    h3 {
+      font-size: 1.08rem;
+    }
+
+    .notice {
+      padding: 18px;
+      border: 1px solid #b7dcd5;
+      border-left: 6px solid var(--brand);
+      border-radius: var(--radius);
+      background: var(--soft-green);
+    }
+
+    .notice p {
+      margin: 0;
+    }
+
+    .decision-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .decision-card,
+    .program-card,
+    .principle,
+    .stat {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 20px rgba(24, 34, 48, 0.05);
+    }
+
+    .decision-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 260px;
+      padding: 18px;
+    }
+
+    .decision-card .label {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 14px;
+      padding: 5px 8px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .label.fast {
+      color: var(--brand-dark);
+      background: var(--soft-green);
+    }
+
+    .label.work {
+      color: var(--blue);
+      background: var(--soft-blue);
+    }
+
+    .label.leadership {
+      color: #705100;
+      background: var(--soft-gold);
+    }
+
+    .label.tech {
+      color: #7c2e2e;
+      background: var(--soft-red);
+    }
+
+    .decision-card p {
+      color: var(--muted);
+      margin: 10px 0 14px;
+    }
+
+    .decision-card ol {
+      margin: auto 0 0;
+      padding-left: 20px;
+    }
+
+    .decision-card li {
+      margin-top: 8px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      padding: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--brand-dark);
+      font-size: 1.65rem;
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .program-card {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 14px;
+      padding: 18px;
+    }
+
+    .rank {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--soft-blue);
+      color: var(--blue);
+      font-weight: 900;
+    }
+
+    .program-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: #eef2f7;
+      color: #344054;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .tag.hours {
+      color: var(--brand-dark);
+      background: var(--soft-green);
+    }
+
+    .tag.level {
+      color: #705100;
+      background: var(--soft-gold);
+    }
+
+    .program-actions {
+      grid-column: 2;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 4px;
+    }
+
+    .text-link {
+      color: var(--brand-dark);
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .text-link:hover,
+    .text-link:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .principle {
+      padding: 18px;
+    }
+
+    .principle p {
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: 0 8px 20px rgba(24, 34, 48, 0.05);
+    }
+
+    table {
+      width: 100%;
+      min-width: 940px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #edf4f2;
+      color: var(--brand-dark);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .footer {
+      margin-top: 32px;
+      padding: 26px 0 34px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .credit {
+      text-align: right;
+    }
+
+    .credit a,
+    .footer a {
+      color: var(--brand-dark);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .credit a:hover,
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .decision-grid,
+      .program-grid,
+      .principles,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .decision-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .hero-copy,
+      .route-map {
+        padding: 22px;
+      }
+
+      .section-head,
+      .footer-grid {
+        display: block;
+      }
+
+      .program-card {
+        grid-template-columns: 1fr;
+      }
+
+      .program-actions {
+        grid-column: auto;
+      }
+
+      .credit {
+        margin-top: 16px;
+        text-align: left;
+      }
+    }
+
+    @media print {
+      .topbar,
+      .hero-actions,
+      .button-row {
+        display: none;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      .hero-copy,
+      .route-map,
+      .decision-card,
+      .program-card,
+      .principle,
+      .table-wrap,
+      .stat {
+        box-shadow: none;
+      }
+
+      a {
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+  <header class="topbar">
+    <nav class="page nav" aria-label="Navegação principal">
+      <a class="brand" href="#">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Trilhas de IA | EV.G/Enap</span>
+      </a>
+      <div class="nav-links">
+        <a href="#decisao">Escolher caminho</a>
+        <a href="#programas">Programas</a>
+        <a href="#criterios">Critérios</a>
+        <a href="#resumo">Resumo</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero page" aria-labelledby="titulo">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Guia de curadoria</span>
+          <h1 id="titulo">Trilhas de aprendizagem em IA e tecnologia na EV.G/Enap</h1>
+          <p class="lead">
+            Uma organização prática dos programas disponíveis na Escola Virtual Gov para quem quer começar,
+            aplicar IA no trabalho, liderar iniciativas ou aprofundar-se em dados e tecnologia.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#decisao">Encontrar minha trilha</a>
+            <a class="button secondary" href="#resumo">Ver tabela completa</a>
+          </div>
+        </div>
+
+        <aside class="route-map" aria-labelledby="mapa-titulo">
+          <h2 id="mapa-titulo">Como ler este guia</h2>
+          <p>Não é uma ordem única para todos. A melhor sequência depende do objetivo e do papel profissional.</p>
+          <div class="map-steps">
+            <div class="map-step">
+              <span class="dot">1</span>
+              <div><strong>Entrada rápida</strong><span>Conheça IA e experimente usos seguros.</span></div>
+            </div>
+            <div class="map-step">
+              <span class="dot">2</span>
+              <div><strong>Base comum</strong><span>Entenda aplicações, riscos e contexto público.</span></div>
+            </div>
+            <div class="map-step">
+              <span class="dot">3</span>
+              <div><strong>Aplicação por perfil</strong><span>Escolha administração, liderança ou TIC/dados.</span></div>
+            </div>
+            <div class="map-step">
+              <span class="dot">4</span>
+              <div><strong>Aprofundamento</strong><span>Avance em gestão, governança, dados ou projetos técnicos.</span></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="page" aria-label="Aviso importante">
+      <div class="notice">
+        <p>
+          <strong>Nota de uso:</strong> este é um guia independente de curadoria. Os links levam às páginas oficiais da EV.G,
+          que devem prevalecer para inscrição, público-alvo, certificação, ementa e carga horária.
+          Informações verificadas em 28/05/2026.
+        </p>
+      </div>
+      <div class="stats" aria-label="Resumo numérico">
+        <div class="stat"><strong>10</strong><span>programas e formações organizados por perfil</span></div>
+        <div class="stat"><strong>8h</strong><span>menor porta de entrada para experimentar IA</span></div>
+        <div class="stat"><strong>4</strong><span>caminhos práticos de decisão</span></div>
+        <div class="stat"><strong>EV.G</strong><span>fonte oficial para inscrição e certificação</span></div>
+      </div>
+    </section>
+
+    <section id="decisao" class="page">
+      <div class="section-head">
+        <div>
+          <h2>Escolha pelo objetivo, não por uma fila única</h2>
+          <p>
+            A sequência abaixo reduz a sensação de que todos precisam cursar centenas de horas.
+            Comece pelo caminho mais próximo da sua necessidade atual.
+          </p>
+        </div>
+      </div>
+
+      <div class="decision-grid">
+        <article class="decision-card">
+          <span class="label fast">Começar rápido</span>
+          <h3>Quero entender IA e testar usos práticos</h3>
+          <p>Melhor para quem está no ponto zero e precisa de uma primeira experiência curta e segura.</p>
+          <ol>
+            <li>Fundamentos de IA do Google</li>
+            <li>Fundamentos e Aplicações da IA para o Agente Público</li>
+          </ol>
+        </article>
+
+        <article class="decision-card">
+          <span class="label work">Rotina administrativa</span>
+          <h3>Quero aplicar IA em tarefas e processos</h3>
+          <p>Foco em produtividade, atendimento, organização de trabalho, automação simples e melhoria de fluxos.</p>
+          <ol>
+            <li>IA na Prática</li>
+            <li>IA para Otimização de Processos e Automação Inteligente</li>
+            <li>Tomada de Decisão para Gestores Públicos</li>
+          </ol>
+        </article>
+
+        <article class="decision-card">
+          <span class="label leadership">Gestão e liderança</span>
+          <h3>Quero decidir, priorizar e governar iniciativas de IA</h3>
+          <p>Indicado para coordenação de equipes, áreas finalísticas, políticas públicas e projetos institucionais.</p>
+          <ol>
+            <li>Fundamentos de IA para Lideranças</li>
+            <li>IA Estratégica e Visão de Futuro</li>
+            <li>Executivo de Dados e IA</li>
+          </ol>
+        </article>
+
+        <article class="decision-card">
+          <span class="label tech">TIC, dados e tecnologia</span>
+          <h3>Quero atuar perto de sistemas, dados e projetos técnicos</h3>
+          <p>Para quem precisa dialogar com equipes técnicas ou estruturar soluções baseadas em dados e IA.</p>
+          <ol>
+            <li>Fundamentos de TI, Dados e IA para Gestores de TIC</li>
+            <li>Engenharia de Dados e IA Aplicada</li>
+            <li>Executivo de Dados e IA</li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+    <section id="programas" class="page">
+      <div class="section-head">
+        <div>
+          <h2>Programas recomendados</h2>
+          <p>
+            A ordem abaixo é uma referência de progressão. Ela combina entrada curta, base comum e aprofundamentos por perfil.
+          </p>
+        </div>
+      </div>
+
+      <div class="program-grid">
+        <article class="program-card">
+          <span class="rank">1</span>
+          <div>
+            <h3>Fundamentos de IA do Google</h3>
+            <p>Porta de entrada curta para entender IA generativa e experimentar usos de produtividade com responsabilidade.</p>
+            <div class="meta">
+              <span class="tag hours">8h</span>
+              <span class="tag">entrada rápida</span>
+              <span class="tag level">iniciante</span>
+            </div>
+          </div>
+          <div class="program-actions">
+            <a class="text-link" href="https://www.escolavirtual.gov.br/programa/google/6" target="_blank" rel="noopener">Abrir página oficial</a>
+          </div>
+        </article>
+
+        <article class="program-card">
+          <span class="rank">2</span>
+          <div>
+            <h3>Fundamentos e Aplicações da IA para o Agente Público</h3>
+            <p>Base ampla sobre conceitos, ética, transparência, inovação e usos de IA no setor público.</p>
+            <div class="meta">
+              <span class="tag hours">112h</span>
+              <span class="tag">base comum</span>
+              <span class="tag">setor público</span>
+            </div>
+          </div>
+          <div class="program-actions">
+            <a class="text-link" href="https://www.escolavirtual.gov.br/programa/261" target="_blank" rel="noopener">Abrir página oficial</a>
+          </div>
+        </article>
+
+        <article class="program-card">
+          <span class="rank">3</span>
+          <div>
+            <h3>IA na Prática: Ferramentas e Soluções no Dia a Dia do Agente Público</h3>
+            <p>Aplicação prática em tarefas, produtividade, automação, análise de dados e apoio à decisão.</p>
+            <div class="meta">
+              <span class="tag hours">173h</span>
+              <span class="tag">mão na massa</span>
+              <span class="tag">rotina de trabalho</span>
+            </div>
+          </div>
+          <div class="program-actions">
+            <a class="text-link" href="https://www.escolavirtual.gov.br/programa/319" target="_blank" rel="noopener">Abrir página oficial</a>
+          </div>
+        </article>
+
+        <article class="program-card">
+          <span class="rank">4</span>
+          <div>
+            <h3>IA para Otimização de Processos e Automação Inteligente no Serviço Público</h3>
+            <p>Ajuda a repensar processos, reduzir retrabalho, qualificar serviços e organizar fluxos com IA.</p>
+            <div class="meta">
+              <span class="tag hours">155h</span>
+              <span class="tag">processos</span>
+              <span class="tag">automação</span>
+            </div>
+          </div>
+          <div class="program-actions">
+            <a class="text-link" href="https://www.escolavirtual.gov.br/programa/365" target="_blank" rel="noopener">Abrir página oficial</a>
+          </div>
+        </article>
+
+        <article class="program-card">
+          <span class="rank">5</span>
+          <div>
+            <h3>Fundamentos de Inteligência Artificial para Lideranças</h3>
+            <p>Foco em tomada de decisão, evidências, comunicação com dados e liderança em ambientes com IA.</p>
+            <div class="meta">
+              <span class="tag hours">106h</span>
+              <span class="tag">liderança</span>
+              <span class="tag">decisão</span>
+            </div>
+          </div>
+          <div class="program-actions">
+            <a class="text-link" href="https://www.escolavirtual.gov.br/programa/310" target="_blank" rel="noopener">Abrir página oficial</a>
+          </div>
+        </article>
+
+        <article class="program-card">
+          <span class="rank">6</span>
+          <div>
+            <h3>IA para Otimização de Processos e Tomada de Decisão para Gestores Públicos</h3>
+            <p>Boa ponte entre uso prático e gestão: diagnóstico de oportunidades, decisão e melhoria de processos.</p>
+            <div class="meta">
+              <span class="tag hours">71h</span>
+              <span class="tag">gestão</span>
+              <span class="tag">decisão</span>
+            </div>
+          </div>
+          <div class="program-actions">
+            <a class="text-link" href="https://www.escolavirtual.gov.br/programa/361" target="_blank" rel="noopener">Abrir página oficial</a>
+          </div>
+        </article>
+
+        <article class="program-card">
+          <span class="rank">7</span>
+          <div>
+            <h3>IA Estratégica e Visão de Futuro para Lideranças no Setor Público</h3>
+            <p>Para discutir cenários, inovação, governança, valor público e posicionamento institucional diante da IA.</p>
+            <div class="meta">
+              <span class="tag hours">133h</span>
+              <span class="tag">estratégia</span>
+              <span class="tag">governança</span>
+            </div>
+          </div>
+          <div class="program-actions">
+            <a class="text-link" href="https://www.escolavirtual.gov.br/programa/343" target="_blank" rel="noopener">Abrir página oficial</a>
+          </div>
+        </article>
+
+        <article class="program-card">
+          <span class="rank">8</span>
+          <div>
+            <h3>Fundamentos de TI, Dados e IA para Gestores de TIC</h3>
+            <p>Base para dialogar com times técnicos: TI, dados, Python, nuvem, inteligência artificial e gestão de TIC.</p>
+            <div class="meta">
+              <span class="tag hours">169h</span>
+              <span class="tag">TIC</span>
+              <span class="tag">dados</span>
+            </div>
+          </div>
+          <div class="program-actions">
+            <a class="text-link" href="https://www.escolavirtual.gov.br/programa/313" target="_blank" rel="noopener">Abrir página oficial</a>
+          </div>
+        </article>
+
+        <article class="program-card">
+          <span class="rank">9</span>
+          <div>
+            <h3>Engenharia de Dados e IA Aplicada para Gestores de TIC</h3>
+            <p>Aprofundamento em pipelines, SQL, Python, ciência de dados, projetos de IA e gestão de soluções.</p>
+            <div class="meta">
+              <span class="tag hours">104h</span>
+              <span class="tag">engenharia de dados</span>
+              <span class="tag level">avançado</span>
+            </div>
+          </div>
+          <div class="program-actions">
+            <a class="text-link" href="https://www.escolavirtual.gov.br/programa/329" target="_blank" rel="noopener">Abrir página oficial</a>
+          </div>
+        </article>
+
+        <article class="program-card">
+          <span class="rank">10</span>
+          <div>
+            <h3>Executivo de Dados e IA: Fundamentos e Estratégias no Setor Público</h3>
+            <p>Formação robusta para governança, estratégia, cultura de dados e liderança de iniciativas institucionais.</p>
+            <div class="meta">
+              <span class="tag hours">260h</span>
+              <span class="tag">governança</span>
+              <span class="tag level">aprofundamento</span>
+            </div>
+          </div>
+          <div class="program-actions">
+            <a class="text-link" href="https://www.escolavirtual.gov.br/programa/352" target="_blank" rel="noopener">Abrir página oficial</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="criterios" class="page">
+      <div class="section-head">
+        <div>
+          <h2>Critérios de curadoria</h2>
+          <p>As recomendações priorizam utilidade imediata, aderência ao setor público e progressão realista.</p>
+        </div>
+      </div>
+
+      <div class="principles">
+        <article class="principle">
+          <h3>Separar entrada de aprofundamento</h3>
+          <p>Um iniciante não precisa começar por uma formação longa. Primeiro vem repertório e confiança; depois vem especialização.</p>
+        </article>
+        <article class="principle">
+          <h3>Respeitar o papel profissional</h3>
+          <p>Servidores em rotina administrativa, lideranças e equipes de TIC precisam de ênfases diferentes.</p>
+        </article>
+        <article class="principle">
+          <h3>Usar a página oficial como referência</h3>
+          <p>Carga horária, público-alvo, certificação e disponibilidade podem mudar. A EV.G é a fonte final.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="resumo" class="page">
+      <div class="section-head">
+        <div>
+          <h2>Tabela de consulta rápida</h2>
+          <p>Use esta tabela para compartilhar a curadoria e comparar caminhos.</p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Referência</th>
+              <th>Programa ou formação</th>
+              <th>Carga</th>
+              <th>Melhor uso</th>
+              <th>Perfil principal</th>
+              <th>Link oficial</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Fundamentos de IA do Google</td>
+              <td>8h</td>
+              <td>Primeira experiência com IA generativa</td>
+              <td>Iniciantes</td>
+              <td><a class="text-link" href="https://www.escolavirtual.gov.br/programa/google/6" target="_blank" rel="noopener">EV.G</a></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Fundamentos e Aplicações da IA para o Agente Público</td>
+              <td>112h</td>
+              <td>Base comum para setor público</td>
+              <td>Servidores públicos</td>
+              <td><a class="text-link" href="https://www.escolavirtual.gov.br/programa/261" target="_blank" rel="noopener">EV.G</a></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>IA na Prática</td>
+              <td>173h</td>
+              <td>Ferramentas, produtividade e uso no dia a dia</td>
+              <td>Rotina administrativa</td>
+              <td><a class="text-link" href="https://www.escolavirtual.gov.br/programa/319" target="_blank" rel="noopener">EV.G</a></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>IA para Otimização de Processos e Automação Inteligente</td>
+              <td>155h</td>
+              <td>Melhoria de processos e automação</td>
+              <td>Equipes operacionais e gestores</td>
+              <td><a class="text-link" href="https://www.escolavirtual.gov.br/programa/365" target="_blank" rel="noopener">EV.G</a></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Fundamentos de IA para Lideranças</td>
+              <td>106h</td>
+              <td>Tomada de decisão e liderança com IA</td>
+              <td>Lideranças e gestores</td>
+              <td><a class="text-link" href="https://www.escolavirtual.gov.br/programa/310" target="_blank" rel="noopener">EV.G</a></td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>IA para Otimização de Processos e Tomada de Decisão</td>
+              <td>71h</td>
+              <td>Gestão prática de oportunidades com IA</td>
+              <td>Gestores públicos</td>
+              <td><a class="text-link" href="https://www.escolavirtual.gov.br/programa/361" target="_blank" rel="noopener">EV.G</a></td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>IA Estratégica e Visão de Futuro</td>
+              <td>133h</td>
+              <td>Estratégia, cenários, governança e valor público</td>
+              <td>Alta gestão e liderança</td>
+              <td><a class="text-link" href="https://www.escolavirtual.gov.br/programa/343" target="_blank" rel="noopener">EV.G</a></td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>Fundamentos de TI, Dados e IA para Gestores de TIC</td>
+              <td>169h</td>
+              <td>Base técnica para gestão de TIC</td>
+              <td>Gestores de TIC</td>
+              <td><a class="text-link" href="https://www.escolavirtual.gov.br/programa/313" target="_blank" rel="noopener">EV.G</a></td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>Engenharia de Dados e IA Aplicada para Gestores de TIC</td>
+              <td>104h</td>
+              <td>Dados, pipelines, Python e projetos de IA</td>
+              <td>TIC e dados</td>
+              <td><a class="text-link" href="https://www.escolavirtual.gov.br/programa/329" target="_blank" rel="noopener">EV.G</a></td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>Executivo de Dados e IA</td>
+              <td>260h</td>
+              <td>Governança, estratégia e cultura de dados</td>
+              <td>Executivos, gestores e líderes</td>
+              <td><a class="text-link" href="https://www.escolavirtual.gov.br/programa/352" target="_blank" rel="noopener">EV.G</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="page footer-grid">
+      <div>
+        <strong>Guia independente para consulta e compartilhamento.</strong><br />
+        Links oficiais: <a href="https://www.escolavirtual.gov.br/" target="_blank" rel="noopener">Escola Virtual Gov - EV.G</a>.
+        Última verificação: 28/05/2026.
+      </div>
+      <div class="credit">
+        Curadoria e organização: Marcelo7Bastos<br />
+        Contato: <a href="mailto:marceloc.bastos@hotmail.com">marceloc.bastos@hotmail.com</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

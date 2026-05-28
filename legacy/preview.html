@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trilha Recomendada de IA e Tecnologia — Enap/EV.G</title>
+  <style>
+    :root {
+      --verde: #00796b;
+      --verde-escuro: #00564d;
+      --verde-claro: #e5f4f1;
+      --azul: #0b3b75;
+      --azul-claro: #e8f1fb;
+      --amarelo: #f2c94c;
+      --texto: #1f2937;
+      --muted: #667085;
+      --borda: #d9e2ec;
+      --fundo: #f7faf9;
+      --branco: #ffffff;
+      --sombra: 0 14px 35px rgba(16, 24, 40, 0.10);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      background: radial-gradient(circle at top left, #dff4ee 0, transparent 34%), var(--fundo);
+      color: var(--texto);
+      line-height: 1.55;
+    }
+
+    a { color: inherit; }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--azul), var(--verde));
+      color: #fff;
+      border-radius: 32px;
+      padding: 42px;
+      box-shadow: var(--sombra);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -80px;
+      top: -80px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 50%;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.26);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+
+    h1 {
+      margin: 20px 0 12px;
+      max-width: 850px;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+    }
+
+    .hero p {
+      max-width: 780px;
+      font-size: 1.16rem;
+      color: rgba(255,255,255,0.90);
+      margin: 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,.12); }
+    .btn-primary { background: #fff; color: var(--verde-escuro); }
+    .btn-secondary { background: rgba(255,255,255,.12); color: #fff; border-color: rgba(255,255,255,.35); }
+    .btn-small { padding: 9px 13px; font-size: 0.9rem; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin: 22px 0 0;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 1.75rem;
+      line-height: 1;
+    }
+
+    .stat-card span {
+      display: block;
+      margin-top: 6px;
+      color: rgba(255,255,255,.83);
+      font-size: .95rem;
+    }
+
+    .section {
+      margin-top: 34px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.6rem, 3vw, 2.25rem);
+      letter-spacing: -0.04em;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin: 6px 0 0;
+      max-width: 780px;
+    }
+
+    .panel {
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-radius: var(--radius);
+      box-shadow: var(--sombra);
+      padding: 24px;
+    }
+
+    .how-to {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .message {
+      background: var(--verde-claro);
+      border: 1px solid #b7dfd7;
+      color: #17423c;
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .message h3,
+    .choice-card h3,
+    .course-card h3,
+    .phase-card h3 {
+      margin-top: 0;
+    }
+
+    .simple-list {
+      margin: 12px 0 0;
+      padding-left: 20px;
+    }
+
+    .simple-list li { margin: 8px 0; }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .course-card {
+      display: grid;
+      grid-template-columns: 78px 1fr auto;
+      gap: 18px;
+      align-items: center;
+      background: #fff;
+      border: 1px solid var(--borda);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 10px 28px rgba(16, 24, 40, 0.06);
+    }
+
+    .rank {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--verde), var(--azul));
+      color: white;
+      font-size: 1.35rem;
+      font-weight: 900;
+    }
+
+    .course-card h3 {
+      margin-bottom: 7px;
+      font-size: 1.18rem;
+      line-height: 1.25;
+    }
+
+    .course-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--azul-claro);
+      color: var(--azul);
+      font-weight: 800;
+      font-size: .82rem;
+    }
+
+    .tag.green {
+      background: var(--verde-claro);
+      color: var(--verde-escuro);
+    }
+
+    .tag.yellow {
+      background: #fff7d6;
+      color: #7b5c00;
+    }
+
+    .course-action {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-end;
+    }
+
+    .hours {
+      font-weight: 900;
+      color: var(--verde-escuro);
+      font-size: 1.05rem;
+      white-space: nowrap;
+    }
+
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      background: var(--verde);
+      color: #fff;
+      padding: 10px 13px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: .9rem;
+    }
+
+    .link-btn:hover { background: var(--verde-escuro); }
+
+    .phases {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .phase-card {
+      border-radius: 22px;
+      border: 1px solid var(--borda);
+      background: #fff;
+      padding: 20px;
+      min-height: 190px;
+      box-shadow: 0 10px 28px rgba(16, 24, 40, 0.06);
+    }
+
+    .phase-number {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: var(--azul);
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .phase-card p { color: var(--muted); margin-bottom: 0; }
+
+    .choices {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .choice-card {
+      background: #fff;
+      border: 1px solid var(--borda);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 10px 28px rgba(16, 24, 40, 0.06);
+    }
+
+    .choice-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .choice-card ol {
+      padding-left: 20px;
+      margin-bottom: 0;
+    }
+
+    .choice-card li { margin: 9px 0; }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--borda);
+      border-radius: 18px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 840px;
+      background: #fff;
+    }
+
+    th, td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--borda);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f0f7f5;
+      color: var(--verde-escuro);
+      font-size: .92rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    td a {
+      color: var(--verde-escuro);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    td a:hover { text-decoration: underline; }
+
+    .footer {
+      margin-top: 36px;
+      color: var(--muted);
+      font-size: .92rem;
+      text-align: center;
+    }
+
+    .footer a {
+      color: var(--azul);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .print-note {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      .hero { padding: 30px 24px; }
+      .stats, .phases, .choices, .how-to { grid-template-columns: 1fr; }
+      .course-card { grid-template-columns: 58px 1fr; }
+      .course-action { grid-column: 1 / -1; align-items: flex-start; flex-direction: row; justify-content: space-between; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .hero, .panel, .course-card, .phase-card, .choice-card { box-shadow: none; }
+      .btn, .link-btn { border: 1px solid #999; color: #000; background: #fff; }
+      .print-note { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <span class="eyebrow">Trilha de aprendizagem • IA e tecnologia</span>
+      <h1>Por onde começar em IA e tecnologia?</h1>
+      <p>
+        Uma sequência simples de cursos da EV.G/Enap para quem está começando do zero.
+        A ideia é começar pelo uso prático, ganhar confiança e só depois avançar para gestão, dados e tecnologia.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#ranking">Ver sequência recomendada</a>
+        <a class="btn btn-secondary" href="#caminhos">Escolher uma especialização</a>
+      </div>
+      <div class="stats" aria-label="Resumo da trilha">
+        <div class="stat-card"><strong>10</strong><span>programas organizados</span></div>
+        <div class="stat-card"><strong>448h</strong><span>trilha essencial inicial</span></div>
+        <div class="stat-card"><strong>3</strong><span>caminhos de especialização</span></div>
+        <div class="stat-card"><strong>0</strong><span>pré-requisitos formais</span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="how-to">
+        <div class="panel message">
+          <h2>Recomendação direta</h2>
+          <p>
+            Para alguém do zero, não tente fazer tudo ao mesmo tempo. Comece pelos quatro primeiros cursos.
+            Eles criam uma base suficiente para usar IA no trabalho, entender riscos e melhorar rotinas.
+          </p>
+          <ul class="simple-list">
+            <li><strong>Primeiro:</strong> entender o que é IA e como usar com segurança.</li>
+            <li><strong>Depois:</strong> praticar com ferramentas e tarefas reais.</li>
+            <li><strong>Em seguida:</strong> aplicar IA em processos e fluxos de trabalho.</li>
+            <li><strong>Por fim:</strong> escolher uma trilha de aprofundamento.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h2>Como usar esta trilha</h2>
+          <p class="subtitle">
+            Esta página é um guia de orientação. Os cursos podem ser feitos conforme disponibilidade, mas a ordem sugerida evita começar por conteúdos muito técnicos ou muito estratégicos antes da base.
+          </p>
+          <div class="tags" style="margin-top:18px">
+            <span class="tag green">Iniciante</span>
+            <span class="tag">Serviço público</span>
+            <span class="tag yellow">IA aplicada</span>
+            <span class="tag">Dados e gestão</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div>
+          <h2>Mapa da jornada</h2>
+          <p class="subtitle">A aprendizagem foi dividida em quatro fases para facilitar a decisão.</p>
+        </div>
+      </div>
+      <div class="phases">
+        <article class="phase-card">
+          <div class="phase-number">1</div>
+          <h3>Começar</h3>
+          <p>Aprender os conceitos básicos de IA e ganhar segurança para usar ferramentas no dia a dia.</p>
+        </article>
+        <article class="phase-card">
+          <div class="phase-number">2</div>
+          <h3>Praticar</h3>
+          <p>Aplicar IA em tarefas reais: textos, organização, automação simples e apoio à decisão.</p>
+        </article>
+        <article class="phase-card">
+          <div class="phase-number">3</div>
+          <h3>Melhorar processos</h3>
+          <p>Usar IA para repensar fluxos de trabalho, reduzir retrabalho e qualificar serviços.</p>
+        </article>
+        <article class="phase-card">
+          <div class="phase-number">4</div>
+          <h3>Aprofundar</h3>
+          <p>Escolher um caminho: gestão, liderança, TIC, dados ou estratégia.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="ranking" class="section">
+      <div class="section-title">
+        <div>
+          <h2>Sequência recomendada</h2>
+          <p class="subtitle">Ordem sugerida para quem está começando do zero.</p>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <article class="course-card">
+          <div class="rank">1</div>
+          <div>
+            <h3>Fundamentos de IA do Google</h3>
+            <p>Comece aqui. É curto, direto e ajuda a entender como usar IA para aumentar produtividade com responsabilidade.</p>
+            <div class="tags"><span class="tag green">entrada</span><span class="tag">IA básica</span><span class="tag yellow">mais rápido</span></div>
+          </div>
+          <div class="course-action"><span class="hours">8h</span><a class="link-btn" href="https://www.escolavirtual.gov.br/programa/google/6" target="_blank" rel="noopener">Acessar curso ↗</a></div>
+        </article>
+
+        <article class="course-card">
+          <div class="rank">2</div>
+          <div>
+            <h3>Fundamentos e Aplicações da IA para o Agente Público</h3>
+            <p>Forma a base geral: IA no setor público, uso ético, transparência, inovação e serviços ao cidadão.</p>
+            <div class="tags"><span class="tag green">base completa</span><span class="tag">serviço público</span></div>
+          </div>
+          <div class="course-action"><span class="hours">112h</span><a class="link-btn" href="https://www.escolavirtual.gov.br/programa/261" target="_blank" rel="noopener">Acessar curso ↗</a></div>
+        </article>
+
+        <article class="course-card">
+          <div class="rank">3</div>
+          <div>
+            <h3>IA na Prática: Ferramentas e Soluções no dia a dia do Agente Público</h3>
+            <p>Depois da base, entra a prática: ferramentas, automação de tarefas, análise de dados e produtividade.</p>
+            <div class="tags"><span class="tag green">prático</span><span class="tag">rotina de trabalho</span></div>
+          </div>
+          <div class="course-action"><span class="hours">173h</span><a class="link-btn" href="https://www.escolavirtual.gov.br/programa/319" target="_blank" rel="noopener">Acessar curso ↗</a></div>
+        </article>
+
+        <article class="course-card">
+          <div class="rank">4</div>
+          <div>
+            <h3>IA para Otimização de Processos e Automação Inteligente no Serviço Público</h3>
+            <p>Ajuda a usar IA para melhorar processos, organizar fluxos de trabalho e qualificar o atendimento.</p>
+            <div class="tags"><span class="tag green">processos</span><span class="tag">automação</span></div>
+          </div>
+          <div class="course-action"><span class="hours">155h</span><a class="link-btn" href="https://www.escolavirtual.gov.br/programa/365" target="_blank" rel="noopener">Acessar curso ↗</a></div>
+        </article>
+
+        <article class="course-card">
+          <div class="rank">5</div>
+          <div>
+            <h3>Fundamentos de Inteligência Artificial para lideranças: aprimorando a tomada de decisão</h3>
+            <p>Bom para quem precisa tomar decisões, comunicar dados e entender gestão orientada por evidências.</p>
+            <div class="tags"><span class="tag green">decisão</span><span class="tag">liderança</span><span class="tag">dados</span></div>
+          </div>
+          <div class="course-action"><span class="hours">106h</span><a class="link-btn" href="https://www.escolavirtual.gov.br/programa/310" target="_blank" rel="noopener">Acessar curso ↗</a></div>
+        </article>
+
+        <article class="course-card">
+          <div class="rank">6</div>
+          <div>
+            <h3>IA para Otimização de Processos e Tomada de Decisão para Gestores Públicos</h3>
+            <p>Indicado para quem já tem alguma base e quer aplicar IA na gestão, diagnóstico de oportunidades e decisões.</p>
+            <div class="tags"><span class="tag green">gestão</span><span class="tag">tomada de decisão</span></div>
+          </div>
+          <div class="course-action"><span class="hours">71h</span><a class="link-btn" href="https://www.escolavirtual.gov.br/programa/361" target="_blank" rel="noopener">Acessar curso ↗</a></div>
+        </article>
+
+        <article class="course-card">
+          <div class="rank">7</div>
+          <div>
+            <h3>IA Estratégica e Visão de Futuro para Lideranças no Setor Público</h3>
+            <p>Para pensar IA de forma estratégica: cenários, inovação, governança e geração de valor público.</p>
+            <div class="tags"><span class="tag green">estratégia</span><span class="tag">futuro</span><span class="tag">liderança</span></div>
+          </div>
+          <div class="course-action"><span class="hours">133h</span><a class="link-btn" href="https://www.escolavirtual.gov.br/programa/343" target="_blank" rel="noopener">Acessar curso ↗</a></div>
+        </article>
+
+        <article class="course-card">
+          <div class="rank">8</div>
+          <div>
+            <h3>Fundamentos de TI, Dados e IA para Gestores de TIC</h3>
+            <p>Ponte para quem quer entender tecnologia com mais profundidade: TI, dados, Python, nuvem e IA.</p>
+            <div class="tags"><span class="tag green">TIC</span><span class="tag">dados</span><span class="tag">base técnica</span></div>
+          </div>
+          <div class="course-action"><span class="hours">169h</span><a class="link-btn" href="https://www.escolavirtual.gov.br/programa/313" target="_blank" rel="noopener">Acessar curso ↗</a></div>
+        </article>
+
+        <article class="course-card">
+          <div class="rank">9</div>
+          <div>
+            <h3>Engenharia de Dados e IA Aplicada para Gestores de TIC</h3>
+            <p>Mais avançado. Entra em pipelines, SQL, Python, ciência de dados e projetos de IA.</p>
+            <div class="tags"><span class="tag green">avançado</span><span class="tag">engenharia de dados</span><span class="tag">IA aplicada</span></div>
+          </div>
+          <div class="course-action"><span class="hours">104h</span><a class="link-btn" href="https://www.escolavirtual.gov.br/programa/329" target="_blank" rel="noopener">Acessar curso ↗</a></div>
+        </article>
+
+        <article class="course-card">
+          <div class="rank">10</div>
+          <div>
+            <h3>Executivo de Dados e IA: Fundamentos e Estratégias no Setor Público</h3>
+            <p>Deixe para o fim ou para quem atua em governança. É o programa mais robusto e estratégico.</p>
+            <div class="tags"><span class="tag green">governança</span><span class="tag">estratégia</span><span class="tag yellow">mais longo</span></div>
+          </div>
+          <div class="course-action"><span class="hours">260h</span><a class="link-btn" href="https://www.escolavirtual.gov.br/programa/352" target="_blank" rel="noopener">Acessar curso ↗</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="caminhos" class="section">
+      <div class="section-title">
+        <div>
+          <h2>Depois da base, escolha um caminho</h2>
+          <p class="subtitle">A partir do 5º curso, a melhor sequência depende do tipo de atuação desejada.</p>
+        </div>
+      </div>
+      <div class="choices">
+        <article class="choice-card">
+          <h3>🧭 Administrativo e operacional</h3>
+          <p>Para quem quer melhorar rotinas, processos, atendimento e produtividade.</p>
+          <ol>
+            <li>Tomada de decisão para gestores públicos</li>
+            <li>Fundamentos de IA para lideranças</li>
+          </ol>
+        </article>
+        <article class="choice-card">
+          <h3>📊 Gestão e liderança</h3>
+          <p>Para quem coordena equipes, projetos, políticas ou áreas finalísticas.</p>
+          <ol>
+            <li>Fundamentos de IA para lideranças</li>
+            <li>Tomada de decisão para gestores públicos</li>
+            <li>IA estratégica e visão de futuro</li>
+            <li>Executivo de Dados e IA</li>
+          </ol>
+        </article>
+        <article class="choice-card">
+          <h3>💻 TIC, dados e tecnologia</h3>
+          <p>Para quem quer atuar mais perto de dados, sistemas, automação e projetos técnicos.</p>
+          <ol>
+            <li>Fundamentos de TI, Dados e IA</li>
+            <li>Engenharia de Dados e IA Aplicada</li>
+            <li>Executivo de Dados e IA</li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div>
+          <h2>Tabela rápida</h2>
+          <p class="subtitle">Resumo para consulta e compartilhamento.</p>
+        </div>
+      </div>
+      <div class="panel" style="padding:0; overflow:hidden;">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Ordem</th>
+                <th>Curso</th>
+                <th>Carga horária</th>
+                <th>Função na trilha</th>
+                <th>Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Fundamentos de IA do Google</td><td>8h</td><td>Entrada rápida em IA</td><td><a href="https://www.escolavirtual.gov.br/programa/google/6" target="_blank" rel="noopener">Abrir</a></td></tr>
+              <tr><td>2</td><td>Fundamentos e Aplicações da IA para o Agente Público</td><td>112h</td><td>Base geral para setor público</td><td><a href="https://www.escolavirtual.gov.br/programa/261" target="_blank" rel="noopener">Abrir</a></td></tr>
+              <tr><td>3</td><td>IA na Prática: Ferramentas e Soluções no dia a dia do Agente Público</td><td>173h</td><td>Uso prático no trabalho</td><td><a href="https://www.escolavirtual.gov.br/programa/319" target="_blank" rel="noopener">Abrir</a></td></tr>
+              <tr><td>4</td><td>IA para Otimização de Processos e Automação Inteligente no Serviço Público</td><td>155h</td><td>Processos e automação</td><td><a href="https://www.escolavirtual.gov.br/programa/365" target="_blank" rel="noopener">Abrir</a></td></tr>
+              <tr><td>5</td><td>Fundamentos de Inteligência Artificial para lideranças</td><td>106h</td><td>Decisão e liderança</td><td><a href="https://www.escolavirtual.gov.br/programa/310" target="_blank" rel="noopener">Abrir</a></td></tr>
+              <tr><td>6</td><td>IA para Otimização de Processos e Tomada de Decisão para Gestores Públicos</td><td>71h</td><td>Gestão e decisão</td><td><a href="https://www.escolavirtual.gov.br/programa/361" target="_blank" rel="noopener">Abrir</a></td></tr>
+              <tr><td>7</td><td>IA Estratégica e Visão de Futuro para Lideranças no Setor Público</td><td>133h</td><td>Estratégia e inovação</td><td><a href="https://www.escolavirtual.gov.br/programa/343" target="_blank" rel="noopener">Abrir</a></td></tr>
+              <tr><td>8</td><td>Fundamentos de TI, Dados e IA para Gestores de TIC</td><td>169h</td><td>Ponte para base técnica</td><td><a href="https://www.escolavirtual.gov.br/programa/313" target="_blank" rel="noopener">Abrir</a></td></tr>
+              <tr><td>9</td><td>Engenharia de Dados e IA Aplicada para Gestores de TIC</td><td>104h</td><td>Dados e IA aplicada</td><td><a href="https://www.escolavirtual.gov.br/programa/329" target="_blank" rel="noopener">Abrir</a></td></tr>
+              <tr><td>10</td><td>Executivo de Dados e IA: Fundamentos e Estratégias no Setor Público</td><td>260h</td><td>Governança e estratégia</td><td><a href="https://www.escolavirtual.gov.br/programa/352" target="_blank" rel="noopener">Abrir</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section panel">
+      <h2>Mensagem para orientar o colega</h2>
+      <p>
+        Comece pelo básico e avance aos poucos. O objetivo não é virar especialista de uma vez, mas entender como a IA pode ajudar no trabalho, quais cuidados tomar e como aplicar a tecnologia de forma útil. Depois dos quatro primeiros cursos, escolha o caminho que combina melhor com sua atuação: rotinas administrativas, gestão ou área técnica.
+      </p>
+    </section>
+
+    <p class="footer">
+      Links oficiais da <a href="https://www.escolavirtual.gov.br/" target="_blank" rel="noopener">Escola Virtual Gov — EV.G</a>.
+      Arquivo preparado para consulta rápida, compartilhamento e impressão.
+    </p>
+  </main>
+</body>
+</html>
